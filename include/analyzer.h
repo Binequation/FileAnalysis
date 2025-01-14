@@ -26,13 +26,6 @@ typedef struct {
 void analyze_file(const char *filename, analysis_results *results);
 
 /**
- * @brief Calculates and displays word frequency statistics for a text file.
- * 
- * @param filename  Path to the input file to analyze (file to analyze)
-*/
-void word_frequency(const char *filename);
-
-/**
  * @brief Exports analysis results to a CSV file format.
  * 
  * @param filename  Path to the output CSV file (file to export)

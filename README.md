@@ -46,16 +46,10 @@ make
 Word Count: 450
 Line Count: 35
 Character Count: 2950
-Longest Sentence Length: 128
-Shortest Sentence Length: 18
+Longest Sentence Length (symbols amount): 128
+Shortest Sentence Length (symbols amount): 18
 Average Word Length: 4.37
 Average Sentence Length: 12.9
-
-Word frequency analysis:
-Word: the
-Word: is
-Word: example
-...
 ```
 - **SCV output:**
 ``` CSV
@@ -66,8 +60,8 @@ Type of output: Metric - Value
 Word Count - 450
 Line Count - 35
 Character Count - 2950
-Longest Sentence Length - 128
-Shortest Sentence Length - 18
+Longest Sentence Length (symbols amount) - 128
+Shortest Sentence Length (symbols amount) - 18
 Average Word Length - 4.37
 Average Sentence Length - 12.9
 
