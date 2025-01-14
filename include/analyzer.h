@@ -3,7 +3,7 @@
 
 // Struct for analysis results
 typedef struct {
-    // In sentece counters
+    // In sentence counters
     int    word_count,
            line_count,
            char_count;

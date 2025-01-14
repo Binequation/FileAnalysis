@@ -10,12 +10,7 @@ A straightforward and expandable CLI-application for text file analysis. Word co
     - *Avg word and sentence length.*
 
 - **Advanced analysis:**
-    - *Word frequency analysis (counts how often each words appears).*
     - *Ability to export results to a CSV file.*
-
-- **Additional features:**
-    - *Supports stopwords filtering.*
-    - *Option to analyze multiple files at once.*
 
 # Requirements 
 - GCC 
