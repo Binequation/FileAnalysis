@@ -9,6 +9,10 @@
 // Struct and functions
 #include "../include/analyzer.h"
 
+// Amount of words and sentences
+static int64_t word_count     = 0,
+        sentence_count = 0;
+
 // Define a word length
 #define WORD_LENGTH 1024
 
@@ -39,6 +43,9 @@ void analyze_file(const char *filename, analysis_results *results)
         
         // if character is space then check if it's new line
         if (isspace(character)) {
+            // Increment amount of words
+            ++word_count;
+
             if (character == '\n')
                 // Increment line counter if it's new line
                 results->line_count++;
@@ -52,11 +59,18 @@ void analyze_file(const char *filename, analysis_results *results)
                     results->longest_sentence_length  = sentence_length;
                 else 
                     results->shortest_sentence_length = sentence_length;
+
+                // Increment amount of sentences
+                ++sentence_count;
             }
         } else // Sentence go on without signals of sentence end
             // Increment counter
             ++sentence_length;
     }
+   
+    // Avg results
+    results->average_word_length     = word_count / (double)(results->char_count);
+    results->average_sentence_length = sentence_count / (double)(results->char_count);
 
     // Close file and free memory 
     fclose(file);
