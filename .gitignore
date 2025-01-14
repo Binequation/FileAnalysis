@@ -1,0 +1,26 @@
+# Ignore build artifacts
+/analyzer
+/*.o
+
+# Ignore output directory
+/output/
+
+# Ignore dependency files
+/deps/
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
