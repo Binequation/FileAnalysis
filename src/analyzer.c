@@ -92,9 +92,8 @@ void analyze_file(const char *filename, analysis_results *results)
     }
 
     // Handle case where no sentences were found
-    if (sentence_count == 0) {
+    if (sentence_count == 0)
         results->shortest_sentence_length = 0; // No sentences, set to 0
-    }
 
     // Calculate averages
     results->average_word_length = (results->word_count > 0)

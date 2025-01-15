@@ -14,6 +14,7 @@ A straightforward and expandable CLI-application for text file analysis. Word co
 
 # Requirements 
 - GCC 
+- Make
 
 # How to build 
 1. *Clone the repository to comfortable for you dir*.
