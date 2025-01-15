@@ -4,17 +4,17 @@
 // Struct for analysis results
 typedef struct {
     // In sentence counters
-    int     word_count,
-            line_count,
-            сhar_count;
+    int word_count,
+        line_count,
+        char_count;
 
     // Sentence length counters
-    int     longest_sentence_length,
-            shortest_sentence_length;
+    int longest_sentence_length,
+        shortest_sentence_length;
 
     // Avg lengths of word and sentence counters
-    double  average_word_length,
-            average_sentence_length;
+    double average_word_length,
+           average_sentence_length;
 } analysis_results;
 
 /**
