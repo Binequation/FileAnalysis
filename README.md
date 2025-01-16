@@ -48,14 +48,14 @@ robes and picked up his Nimbus Two Thousand.
 - **Terminal output:**
 ``` Output
 Word Count: 57
-Line Count: 4
-Character Count: 324
-Longest Sentence Length (symbols amount): 134
-Shortest Sentence Length (symbols amount): 31
+Line Count: 5
+Character Count: 325
+Longest Sentence Length (symbols amount except whitespace): 134
+Shortest Sentence Length (symbols amount except whitespace): 31
 Average Word Length: 4.56
-Average Sentence Length: 108.33
+Average Sentence Length: 108.67
 
-Analysis was successfuly exported to output/analysis.csv!
+Do you want to save your results of analysis? (y/n): 
 ```
 
 - **SCV output (optional):**
@@ -64,13 +64,13 @@ Type of output: Metric - Value
 
 ----RESULTS----
 
-Word Count - 57
-Line Count - 4
-Character Count - 324
-Longest Sentence Length (symbols amount) - 134
-Shortest Sentence Length (symbols amount) - 31
-Average Word Length - 4.56
-Average Sentence Length - 108.33
+Word Count: 57
+Line Count: 5
+Character Count: 325
+Longest Sentence Length (symbols amount except whitespace): 134
+Shortest Sentence Length (symbols amount except whitespace): 31
+Average Word Length: 4.56
+Average Sentence Length: 108.67
 
 ---------------
 ```
