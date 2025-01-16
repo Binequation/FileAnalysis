@@ -33,11 +33,11 @@ make
 2. *See a result. All results of analysis will be stored in* `your_output_path` *(optional). 
 
 # Samples of output
-*File is full*
+*File is full:*
 
 **INPUT**
 
-``` data/sample.txt
+``` sample.txt
 Harry knew, when they wished him good luck outside the locker rooms the
 next afternoon, that Ron and Hermione were wondering whether they'd ever
 see him alive again. This wasn't what you'd call comforting. Harry
@@ -46,7 +46,7 @@ robes and picked up his Nimbus Two Thousand.
 ```
 
 - **Terminal output:**
-``` Bash
+``` Output
 Word Count: 57
 Line Count: 4
 Character Count: 324
@@ -75,22 +75,24 @@ Average Sentence Length - 108.33
 ---------------
 ```
 
-*File is empty*
-**Terminal output:**
-``` Bash
+*File is empty:*
+
+**Terminal output**
+``` Output
 File is empty!
 Status: Success
 ```
 
-*File not found*
-**Terminal output:**
-``` Bash
+*File not found:*
+
+**Terminal output**
+``` Output
 Error! Can't open file
 Status: No such file or directory
 ```
 
-*Output path isn't entered*
-``` Bash
+*Output path isn't entered:*
+``` Output
 <...>
 Do you want to save your results of analysis? (y/n): y
 Where you want to save results? Enter the full path: 
