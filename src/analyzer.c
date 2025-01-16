@@ -10,21 +10,17 @@
 // Structure and functions prototypes
 #include "../include/analyzer.h"
 
-// Amount of sentences
-static int64_t sentence_count = 0;
+#define WORD_LENGTH 1024 // Define a word length
 
-// Define a word length
-#define WORD_LENGTH 1024
+static int64_t sentence_count = 0; // Amount of sentences
 
 void analyze_file(const char *filename, analysis_results *results)
 {
-    // Open file in read mode
-    FILE *file = fopen(filename, "r");
+    FILE *file = fopen(filename, "r"); // Open file in read mode
 
-    // Can't open file - exit
-    if (file == NULL) {
-        perror("Error! Can't open file.\n");
-        exit(EXIT_FAILURE);
+    if (file == NULL) { // Can't open file - exit
+        perror("Error! Can't open file\nStatus");
+        exit(EXIT_SUCCESS);
     }
 
     // Set to zero all counters
@@ -39,8 +35,6 @@ void analyze_file(const char *filename, analysis_results *results)
                    word_length     = 0,
                    total_word_char = 0;
 
-
-    // TODO: fix the sentence's length counters
     // Read while not end-of-file
     while ((character = fgetc(file)) != EOF) {
         // Increment amount of characters in text
@@ -103,7 +97,13 @@ void analyze_file(const char *filename, analysis_results *results)
 
     results->average_sentence_length = (sentence_count > 0)
         ? (double)results->char_count / sentence_count : 0.0;
-        
+
+    // Check if file is empty
+    if (results->char_count == 0) {
+        perror("File is empty!\nStatus");
+        exit(EXIT_FAILURE);
+    }
+
     // Close file and free memory 
     fclose(file);
 }
@@ -127,10 +127,10 @@ void export_to_csv(const char *filename, const analysis_results *results)
     fprintf(file, "Line Count - %d\n", 
             results->line_count);
     fprintf(file, "Character Count - %d\n", 
-            results->char_count - 1);
-    fprintf(file, "Longest Sentence Length (symbols amount) - %d\n", 
+            results->char_count - 1); // Remove zero symbol of string
+    fprintf(file, "Longest Sentence Length (symbols amount except whitespace) - %d\n", 
             results->longest_sentence_length);
-    fprintf(file, "Shortest Sentence Length (symbols amount) - %d\n", 
+    fprintf(file, "Shortest Sentence Length (symbols amount except whitespace) - %d\n", 
             results->shortest_sentence_length);
     fprintf(file, "Average Word Length - %.2f\n", 
             results->average_word_length);
@@ -145,11 +145,18 @@ void export_to_csv(const char *filename, const analysis_results *results)
 // Display the analysis results
 void display_results(const analysis_results *results) 
 {
-    printf("Word Count: %d\n", results->word_count);
-    printf("Line Count: %d\n", results->line_count);
-    printf("Character Count: %d\n", results->char_count - 1);
-    printf("Longest Sentence Length (symbols amount): %d\n", results->longest_sentence_length);
-    printf("Shortest Sentence Length (symbols amount): %d\n", results->shortest_sentence_length);
-    printf("Average Word Length: %.2f\n", results->average_word_length);
-    printf("Average Sentence Length: %.2f\n", results->average_sentence_length);
+    printf("Word Count: %d\n", 
+        results->word_count);
+    printf("Line Count: %d\n", 
+        results->line_count);
+    printf("Character Count: %d\n", 
+        results->char_count - 1); // Remove zero symbol of string
+    printf("Longest Sentence Length (symbols amount except whitespace): %d\n", 
+        results->longest_sentence_length);
+    printf("Shortest Sentence Length (symbols amount except whitespace): %d\n", 
+        results->shortest_sentence_length);
+    printf("Average Word Length: %.2f\n", 
+        results->average_word_length);
+    printf("Average Sentence Length: %.2f\n", 
+        results->average_sentence_length);
 }
