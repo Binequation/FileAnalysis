@@ -10,6 +10,7 @@ A straightforward and expandable CLI-application for text file analysis. Word co
     - *Avg word and sentence length.*
 
 - **Advanced analysis:**
+    - *Chart bar of word's frequency*
     - *Ability to export results to a CSV file.*
 
 # Requirements 
@@ -126,8 +127,8 @@ Error creating file: No such file or directory
 ```
 
 # Additional Features (Future Plans)
-[] **Text Summarization:** *Create a shortened version of the text that only includes the most crucial details.*
+- **Text Summarization:** *Create a shortened version of the text that only includes the most crucial details.*
 
-[] **Plagiarism Checker:** *To find similarities, compare the text to a database of previously published texts.*
+- **Plagiarism Checker:** *To find similarities, compare the text to a database of previously published texts.*
 
 - [x] **Visualization:** *Create visual depictions of the text data, including word clouds or bar charts for word frequencies.*
