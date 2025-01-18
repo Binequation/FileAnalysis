@@ -172,8 +172,6 @@ void export_to_csv(
     fprintf(file, "Average Sentence Length - %.2f\n", 
             results->average_sentence_length);
     fprintf(file, "\n---------------\n");
-    fprintf(file, "\nWord Frequency Data:\n");
-    fprintf(file, "Word,Frequency\n");
     //Add the bar chart output:
     int max_freq = 0;
     for (int i = 0; i < words_num; i++) {
