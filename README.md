@@ -55,7 +55,20 @@ Shortest Sentence Length (symbols amount except whitespace): 31
 Average Word Length: 4.56
 Average Sentence Length: 108.67
 
-Do you want to save your results of analysis? (y/n): 
+Word Frequency Bar Chart:
+harry                |######################################## (2)
+knew                 |#################### (1)
+when                 |#################### (1)
+they                 |######################################## (2)
+wished               |#################### (1)
+him                  |######################################## (2)
+good                 |#################### (1)
+luck                 |#################### (1)
+outside              |#################### (1)
+the                  |######################################## (2)
+...
+
+Do you want to save your results of analysis? (y/n):
 ```
 
 - **SCV output (optional):**
@@ -64,15 +77,28 @@ Type of output: Metric - Value
 
 ----RESULTS----
 
-Word Count: 57
-Line Count: 5
-Character Count: 325
-Longest Sentence Length (symbols amount except whitespace): 134
-Shortest Sentence Length (symbols amount except whitespace): 31
-Average Word Length: 4.56
-Average Sentence Length: 108.67
+Word Count - 5
+Line Count - 1
+Character Count - 19
+Longest Sentence Length (symbols amount except whitespace) - 0
+Shortest Sentence Length (symbols amount except whitespace) - 0
+Average Word Length - 3.00
+Average Sentence Length - 0.00
 
 ---------------
+
+Word Frequency Bar Chart:
+harry                |######################################## (2)
+knew                 |#################### (1)
+when                 |#################### (1)
+they                 |######################################## (2)
+wished               |#################### (1)
+him                  |######################################## (2)
+good                 |#################### (1)
+luck                 |#################### (1)
+outside              |#################### (1)
+the                  |######################################## (2)
+...
 ```
 
 *File is empty:*
@@ -100,6 +126,8 @@ Error creating file: No such file or directory
 ```
 
 # Additional Features (Future Plans)
-- **Text Summarization:** *Create a shortened version of the text that only includes the most crucial details.*
-- **Plagiarism Checker:** *To find similarities, compare the text to a database of previously published texts.*
-- **Visualization:** *Create visual depictions of the text data, including word clouds or bar charts for word frequencies.*
+[] **Text Summarization:** *Create a shortened version of the text that only includes the most crucial details.*
+
+[] **Plagiarism Checker:** *To find similarities, compare the text to a database of previously published texts.*
+
+- [x] **Visualization:** *Create visual depictions of the text data, including word clouds or bar charts for word frequencies.*
