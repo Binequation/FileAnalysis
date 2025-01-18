@@ -10,11 +10,14 @@
 // Structure and functions prototypes
 #include "../include/analyzer.h"
 
-#define WORD_LENGTH 1024 // Define a word length
-
 static int64_t sentence_count = 0; // Amount of sentences
 
-void analyze_file(const char *filename, analysis_results *results)
+void analyze_file(
+    const char *filename, 
+    analysis_results *results, 
+    word_freq frequencies[], 
+    int *words_num
+)
 {
     FILE *file = fopen(filename, "r"); // Open file in read mode
 
@@ -35,6 +38,11 @@ void analyze_file(const char *filename, analysis_results *results)
                    word_length     = 0,
                    total_word_char = 0;
 
+    // Stores a word, flag and index of word's pos
+    char word[WORD_LENGTH];
+    int wordIndex = 0;
+    int found = 0;
+
     // Read while not end-of-file
     while ((character = fgetc(file)) != EOF) {
         // Increment amount of characters in text
@@ -52,7 +60,6 @@ void analyze_file(const char *filename, analysis_results *results)
                 // Reset word length
                 word_length = 0; 
             }
-
             if (character == '\n')
                 // Increment line counter if it's new line
                 results->line_count++;
@@ -77,6 +84,29 @@ void analyze_file(const char *filename, analysis_results *results)
             // Increment sentence and word lengths
             ++sentence_length;
             ++word_length;
+        }
+        if (isalnum(character)) { //Only alphanumeric characters are part of words
+            word[wordIndex++] = tolower(character); //Convert to lowercase for case-insensitive counting.
+            word[wordIndex] = '\0'; //Null-terminate the word string
+        } else if (wordIndex > 0) { //Encountered a non-alphanumeric character, indicating end of a word
+
+            found = 0;
+
+            for (int i = 0; i < *words_num; i++) {
+                if (strcmp(frequencies[i].word, word) == 0) {
+                    frequencies[i].frequency++;
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                if (*words_num < MAX_WORDS) { //Avoid exceeding the maximum number of words
+                    strcpy(frequencies[*words_num].word, word);
+                    frequencies[*words_num].frequency = 1;
+                    (*words_num)++;
+                }
+            }
+            wordIndex = 0;
         }
     }
    
@@ -108,7 +138,12 @@ void analyze_file(const char *filename, analysis_results *results)
     fclose(file);
 }
 
-void export_to_csv(const char *filename, const analysis_results *results) 
+void export_to_csv(
+    const char *filename, 
+    const analysis_results *results, 
+    const word_freq frequencies[], 
+    int words_num
+) 
 {
     // Open file
     FILE *file = fopen(filename, "w");
@@ -137,7 +172,27 @@ void export_to_csv(const char *filename, const analysis_results *results)
     fprintf(file, "Average Sentence Length - %.2f\n", 
             results->average_sentence_length);
     fprintf(file, "\n---------------\n");
-    
+    fprintf(file, "\nWord Frequency Data:\n");
+    fprintf(file, "Word,Frequency\n");
+    //Add the bar chart output:
+    int max_freq = 0;
+    for (int i = 0; i < words_num; i++) {
+        if (frequencies[i].frequency > max_freq) {
+            max_freq = frequencies[i].frequency;
+        }
+    }
+
+    fprintf(file, "\nWord Frequency Bar Chart:\n");
+    for (int i = 0; i < words_num; i++) {
+        int bar_length = (int)((float)frequencies[i].frequency / max_freq * 40); 
+        if (bar_length < 1) bar_length = 1; 
+        fprintf(file, "%-20s |", frequencies[i].word); 
+        for (int j = 0; j < bar_length; j++) {
+            fprintf(file, "#");
+        }
+        fprintf(file, " (%d)\n", frequencies[i].frequency);
+    }
+
     // Close file
     fclose(file);
 }
@@ -159,4 +214,31 @@ void display_results(const analysis_results *results)
         results->average_word_length);
     printf("Average Sentence Length: %.2f\n", 
         results->average_sentence_length);
+}
+
+void print_bar_chart(const word_freq frequencies[], int words_num) {
+    //This function is the same as in previous responses.
+    if (words_num <= 0) {
+        printf("No words to display.\n");
+        return;
+    }
+
+    // Find maximum frequency for scaling
+    int max_freq = 0;
+    for (int i = 0; i < words_num; i++) {
+        if (frequencies[i].frequency > max_freq) {
+            max_freq = frequencies[i].frequency;
+        }
+    }
+
+    printf("\nWord Frequency Bar Chart:\n");
+    for (int i = 0; i < words_num; i++) {
+        int bar_length = (int)((float)frequencies[i].frequency / max_freq * 40); // Scale to 40 chars
+        if (bar_length < 1) bar_length = 1; //Avoid zero-length bars.
+        printf("%-20s |", frequencies[i].word); //Left-align word
+        for (int j = 0; j < bar_length; j++) {
+            printf("#");
+        }
+        printf(" (%d)\n", frequencies[i].frequency);
+    }
 }

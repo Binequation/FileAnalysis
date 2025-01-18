@@ -17,12 +17,18 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
+    word_freq frequencies[MAX_WORDS]; //Declare the array to store word frequencies
+    int words_num = 0;                //Initialize the number of words counter
+
     // File to analyze
     analysis_results results;
-    analyze_file(argv[1], &results);
+    analyze_file(argv[1], &results, frequencies, &words_num);
 
     // Display and export results of analysis
     display_results(&results);
+
+    // Display bar charts
+    print_bar_chart(frequencies, words_num); //Display the ASCII bar chart
 
     // Ask the user if he wants to save results
     printf("Do you want to save your results of analysis? (y/n): ");
@@ -45,7 +51,7 @@ int main(int argc, char *argv[])
     output_path[strcspn(output_path, "\n")] = '\0';
 
     // Call the export function with the user-provided path
-    export_to_csv(output_path, &results);
+    export_to_csv(output_path, &results, frequencies, words_num);
     printf("\nAnalysis was successfuly exported to %s!\n", output_path);
 
     return EXIT_SUCCESS;
