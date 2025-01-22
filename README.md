@@ -1,7 +1,8 @@
 # Description
 A straightforward and expandable CLI-application for text file analysis. Word count, line count, character count, sentence length, word frequency, and other information are among the insights it offers. In addition to offering a number of other sophisticated tools for further in-depth text analysis, the program may export the analysis findings to a CSV file.
 
-Table of Contents
+# Table of Contents
+
 [Features](https://github.com/Binequation/FileAnalysis?tab=readme-ov-file#features)
 
 [Requirements](https://github.com/Binequation/FileAnalysis?tab=readme-ov-file#requirements)
